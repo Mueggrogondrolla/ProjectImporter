@@ -50,3 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+AST_ProjectImporter/bin
+AST_ProjectImporter/obj
