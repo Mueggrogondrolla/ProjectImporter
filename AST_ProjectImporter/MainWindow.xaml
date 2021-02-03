@@ -1,0 +1,65 @@
+﻿<Window x:Class="AST_ProjectImporter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AST_ProjectImporter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="230">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Project Prefix:" />
+        <TextBox Grid.Column="1" Name="TextBoxProjectPrefix" Text="{Binding ProjectPrefix, Mode=TwoWay}" />
+
+        <Label Grid.Row="1" Content="Assignment Directory:" />
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="TextBoxAssignmentDirectory" Text="{Binding AssignmentDirectory, Mode=TwoWay}" />
+            <Button Grid.Column="1" Name="ButtonBrowseAssignmentDirectory" Click="ButtonBrowseAssignmentDirectory_Click" Content="Browse" />
+        </Grid>
+
+        <Label Grid.Row="2" Content="Additional Dependencies:" />
+        <TextBox Grid.Row="2" Grid.Column="1" Name="TextBoxAdditionalDependencies" Text="{Binding AdditionalDependencies, Mode=TwoWay}" />
+
+        <Label Grid.Row="3" Content="Additional Includes:" />
+        <TextBox Grid.Row="3" Grid.Column="1" Name="TextBoxAdditionalIncludes" Text="{Binding AdditionalIncludes, Mode=TwoWay}" />
+
+        <CheckBox Grid.Row="4" Grid.ColumnSpan="2" Content="Automatically try to search and import source files" IsChecked="{Binding AutoImportSourceFiles, Mode=TwoWay}" />
+
+        <CheckBox Grid.Row="5" Grid.ColumnSpan="2" Content="Automatically import to master solution" IsChecked="{Binding AutoImportToMaster, Mode=TwoWay}" />
+
+        <Label Grid.Row="6" Content="Master solution file:" />
+        <Grid Grid.Row="6" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Row="1" Text="{Binding MasterSolutionPath, Mode=TwoWay}" IsEnabled="{Binding AutoImportToMaster, Mode=OneWay}" />
+            <Button Grid.Row="1" Grid.Column="1" Name="ButtonBrowseMasterSolutionPath" Click="ButtonBrowseMasterSolutionPath_Click" Content="Browse" />
+        </Grid>
+
+        <Button Grid.Row="7" Grid.ColumnSpan="2" Name="ButtonGenerate" Click="ButtonGenerate_Click" Content="Generate Projects" />
+
+        <ProgressBar Grid.Row="8" Grid.ColumnSpan="2" Height="7" Value="{Binding Progress, Mode=OneWay}" Maximum="1" />
+    </Grid>
+</Window>
